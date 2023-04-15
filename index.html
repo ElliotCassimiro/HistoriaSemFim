@@ -5,29 +5,32 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<script src="script.js" defer></script>	
+	
 </head>
 <body>
 	<header>CRIE SUA HISTÓRIA COLABORATIVA</header>
-	<div class="container">
+	<div class="container" >
 		<form>
 			
 			<label for="story">Novo parágrafo da História:</label><br>
-
-			<input type ="text" name="historia" id="form_Historia" onkeyup="receberTextoHistoria()"><br>
-
+		<div id="myText">
+			<input type ="text" name="historia" id="form_Historia" size="145" onkeyup="receberTextoHistoria()"><br>
+			<br>
+		</div>
 			<button type="submit" id="send">Inserir</button>
-		
+			<br>
 
-			<a href="view.php">Entradas salvas</a>
+			<p>História Completa: <br>
+				<textarea id="resultado">  </textarea>				
 
-			<p>História Completa:<span id="valor_Historia"></span></p>
+			<ul id="lista"></ul>
+			
 
 		</form>
 
 	</div>
 
-	
+	<script src="script.js" defer></script>	
 
 </body>
 </html>
