@@ -5,8 +5,8 @@
         console.log(textoHistoria);
 
 
-       document.getElementById("resultado").innerHTML = textoHistoria;
-       localStorage.setItem("resultado", textoHistoria);
+       document.getElementById("resultado").innerHTML = textoHistoria
+    
 
        //const minha_propriedade = localStorage.getItem('valor_Historia');
        //alert("Valor:" + minha_propriedade);
