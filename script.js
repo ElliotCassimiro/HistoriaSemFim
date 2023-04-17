@@ -1,18 +1,3 @@
-    const mysql = require('mysql2');
-
-    const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '151212',
-    database: 'historia_colaborativa'
-    });
-
-    connection.connect(function(err) {
-    if (err) throw err;
-    console.log('Connected!');
-    });
-    
-    
     document.getElementById("historia").addEventListener("keydown", function(event) {
         // Check if "Enter" key was pressed
         if (event.keyCode === 13) {
@@ -21,7 +6,7 @@
         }
     });
     
-    function addToList(event) {
+    function addToList() {
         event.preventDefault();
         var input = document.getElementById("historia").value;
         
@@ -41,15 +26,6 @@
         document.getElementById("myList").appendChild(listItem);
 
            
-        document.getElementById("historia").value = "";
-           
-//adicionando o MySQL
+        document.getElementById("historia").value = "";          
 
-        connection.query(`INSERT INTO list (text) VALUES ('${input}')`, function (error, results, fields) {
-            if (error) throw error;
-            console.log('Saved to database!');
-          });
-        }
-      
-        document.querySelector('form').addEventListener('submit', addToList);
-
+      }
