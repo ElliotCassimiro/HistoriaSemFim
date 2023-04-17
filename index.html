@@ -6,24 +6,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 	
+
+	
 </head>
 <body>
 	<header>CRIE SUA HISTÓRIA COLABORATIVA</header>
 	<div class="container" >
-		<form>
+		
+		<form class="myText">
 			
 			<label for="story">Novo parágrafo da História:</label><br>
 		<div id="myText">
-			<input type ="text" name="historia" id="form_Historia" size="145" onkeyup="receberTextoHistoria()"><br>
+			<input type ="text" id="historia" size="145" list="historico" placeholder="Digite Aqui" autofocus><br>
 			<br>
 		</div>
-			<button type="submit" id="send" onclick="pegarTextoHistória()">Inserir</button>
+			<button type="button" id="send" onclick="addToList()" on="addToList()" >Inserir</button>
 			<br>
+		</form>
+		<form>
+			<ul id="myList">
 
-			<p>História Completa: <br>
-				<textarea id="resultado">  </textarea>				
-
-			<ul id="lista"></ul>
+			</ul>
 
 		</form>
 

@@ -1,38 +1,55 @@
-    //function pegarTextoHistória() {
-    //    const campoTexto = document.querySelector("#formHistoria");
-    //    console.log(campoTexto.value);
-   // }
+    const mysql = require('mysql2');
 
+    const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '151212',
+    database: 'historia_colaborativa'
+    });
 
-    function executar(){
-        var texto= document.getElementById('historia').value;
-        var lista = document.getElementById('historico');
-        var adicionar = true;
-
-        var opt = document.createElement('resultado');
-
-        for(i=0; i <lista.resultado.lenght; i++) {
-           if(texto==lista.resultado[i].value){
-               adicionar=false;
-  
-           } 
-           if(adicionar==true){
-               opt.value=texto;
-               lista.appendChild(opt);        
-               
-           }
+    connection.connect(function(err) {
+    if (err) throw err;
+    console.log('Connected!');
+    });
+    
+    
+    document.getElementById("historia").addEventListener("keydown", function(event) {
+        // Check if "Enter" key was pressed
+        if (event.keyCode === 13) {
+        event.preventDefault(); // prevent form submission
+        document.querySelector("form button[type='button']").click(); // click the "Add to List" button
+        }
+    });
+    
+    function addToList(event) {
+        event.preventDefault();
+        var input = document.getElementById("historia").value;
         
+           
+        if (input === "") {
+            alert("Digite algo!");
+            return;
         }
 
+           
+        var listItem = document.createElement("li");
 
-    //function receberTextoHistoria() {
-     //   var textoHistoria = document.getElementById("form_Historia").value;
-      //  console.log(textoHistoria);
+            
+        listItem.innerHTML = input;
 
+            
+        document.getElementById("myList").appendChild(listItem);
 
-    //   document.getElementById("resultado").innerHTML = textoHistoria
-    
+           
+        document.getElementById("historia").value = "";
+           
+//adicionando o MySQL
 
-       //const minha_propriedade = localStorage.getItem('valor_Historia');
-       //alert("Valor:" + minha_propriedade);
-    }
+        connection.query(`INSERT INTO list (text) VALUES ('${input}')`, function (error, results, fields) {
+            if (error) throw error;
+            console.log('Saved to database!');
+          });
+        }
+      
+        document.querySelector('form').addEventListener('submit', addToList);
+
