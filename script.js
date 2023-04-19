@@ -23,6 +23,6 @@
            
         document.getElementById("historia").value = "";      
         
-    
     }
 
+    

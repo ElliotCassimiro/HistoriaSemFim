@@ -1,0 +1,4 @@
+{
+    "vercel-build": "npx prisma migrate deploy"
+}
+
