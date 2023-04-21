@@ -24,5 +24,3 @@
         document.getElementById("historia").value = "";      
         
     }
-
-    
